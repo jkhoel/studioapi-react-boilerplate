@@ -12,7 +12,13 @@ Studioapi.js needs all its dependencies exposed to the DOM via `<script>` tags i
 - Make sure NodeJS is installed
 - Install required dependencies using `npm i`
 - Open up CDP Studio and run the NMEAGPS demo application
-- Start the web application by running `npm run start`. Open up your favorite web browser (Chrome) and navigate to localhost:5000
+- Start the web application by running `npm start`. This will open up your favorite web browser (Chrome) and navigate to localhost:8080
+
+## How to use the boilerplate for your own projects
+Your main entrypoint is `./src/App.js`. This is where you can pass the client object to subcomponents etc. See the example code.
+
+Note that running `npm start` serves the webapp via webpack-dev-server from the build-folder - but it does not actually build any files!
+So when it comes time to deploy to the webserver of your choice, run `npm run build` and copy all files in the build-folder to your host.
 
 ## Known Issues
 - Importing both the React scripts via CDN and also as modules can bloat the code...
