@@ -7,10 +7,12 @@ Each CDP Application runs a StudioAPIServer exposed on 127.0.0.x:7689 (See Appli
 ## How it works
 Studioapi.js needs all its dependencies exposed to the DOM via `<script>` tags in index.html. The problem then becomes how to expose the studio function to the react components for further use. This is done via index.js. Here we are able to access the studio function as this file is also supplied via a `<script>` tag in index.html. We then create the ApiWrapper-component and mount this to the DOM with ReactDOM - passing the studio function as a prop in the process!
 
-## How to use
-- Add the required scripts to index.html
-- Run NPM install
-- COAD! \o/
+## How to run the demo application
+- Clone this repo
+- Make sure NodeJS is installed
+- Install required dependencies using `npm i`
+- Open up CDP Studio and run the NMEAGPS demo application
+- Start the web application by running `npm run start`. Open up your favorite web browser (Chrome) and navigate to localhost:5000
 
 ## Known Issues
 - Importing both the React scripts via CDN and also as modules can bloat the code...
