@@ -20,9 +20,6 @@ Your main entrypoint is `./src/App.js`. This is where you can pass the client ob
 Note that running `npm start` serves the webapp via webpack-dev-server from the build-folder - but it does not actually build any files!
 So when it comes time to deploy to the webserver of your choice, run `npm run build` and copy all files in the build-folder to your host.
 
-## Known Issues
-- Importing both the React scripts via CDN and also as modules can bloat the code...
-
 ## Learn More
 Visit [CDP Stuido](https://www.cdpstudio.com) to learn more about how to build fast, distributed control systems on industrial computers.
 
