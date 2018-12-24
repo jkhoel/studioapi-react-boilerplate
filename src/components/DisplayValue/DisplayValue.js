@@ -24,9 +24,8 @@ export default class DisplayValue extends Component {
 
       /** Subscribe to any child values this node has. Whenever there is a change, the acompanying callback will be run */
       node.subscribeToChildValues('Value', value => {
-        console.log(value);
         /** Update state, so that we re-render the component three */
-        this.setState({ value });
+        this.setState({ value, name: node.name() });
       });
     });
   }
@@ -36,8 +35,12 @@ export default class DisplayValue extends Component {
   }
 
   render() {
-    const { value } = this.state;
-    return <div>Value: {value}</div>;
+    const { value, name } = this.state;
+    return (
+      <div>
+        {name}: {value}
+      </div>
+    );
   }
 }
 
