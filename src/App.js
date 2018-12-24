@@ -31,6 +31,7 @@ function App(props) {
               client={client}
               INodeAddress='NMEAGPSApp.NMEAOnSerial.GPGGA_Receive.Longitude'
             />
+            <DisplayValue client={client} INodeAddress='NMEAGPSApp.CPULoad' />
           </React.Fragment>
         )}
       />
