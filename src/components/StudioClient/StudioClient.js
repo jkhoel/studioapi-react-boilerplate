@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 /**
  * StudioClient: StudioClient's render function returns the client-object connected to the Studio Client.
- * @param {studioURL} studioUrl
- * @param {studio} studio
- * @param {render} render
+ * @param {object} studio Passed down from studioapi.js
+ * @param {string} studioUrl Address to the CDP Application Web-server
+ * @param {render} render A function that returns a React-object. The client connection is passed to this function as an argument
  */
 export default class StudioClient extends React.Component {
   componentWillMount() {

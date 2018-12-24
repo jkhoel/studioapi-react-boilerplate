@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
  * particular INode. Using a seperate component per INode prevents us
  * from having to refresh the whole node-tree whenever a value changes and
  * just updates the DOMnode we need
+ * @param {object} client Client connection initialized in the StudioClient component
+ * @param {string} INodeAddress INode Address from where to get the value to display
  */
 export default class INode extends Component {
   state = {
@@ -20,8 +22,6 @@ export default class INode extends Component {
 
     /** Find the INode we want to connect to */
     client.find(INodeAddress).then(node => {
-      console.log(node);
-
       /** Subscribe to any child values this node has. Whenever there is a change, the acompanying callback will be run */
       node.subscribeToChildValues('Value', value => {
         /** Update state, so that we re-render the component three */

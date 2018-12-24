@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 /** Components */
 import StudioClient from './components/StudioClient/StudioClient';
-import INode from './components/INode/INode';
+import INodeSchema from './components/INodeSchema/INodeSchema';
+// import INode from './components/INode/INode';
 
 /** Initialize a HTML element, that we will use to inject our React App into the DOM */
 const el = React.createElement;
@@ -21,19 +22,7 @@ function App(props) {
       <StudioClient
         studio={props.studio}
         studioUrl='127.0.0.2:7689'
-        render={client => (
-          <React.Fragment>
-            <INode
-              client={client}
-              INodeAddress='NMEAGPSApp.NMEAOnSerial.GPGGA_Receive.Latitude'
-            />
-            <INode
-              client={client}
-              INodeAddress='NMEAGPSApp.NMEAOnSerial.GPGGA_Receive.Longitude'
-            />
-            <INode client={client} INodeAddress='NMEAGPSApp.CPULoad' />
-          </React.Fragment>
-        )}
+        render={client => <INodeSchema client={client} />}
       />
     </div>
   );
