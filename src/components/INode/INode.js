@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-/** DisplayValue:
+/** INode:
  * This component uses the client connection to find and subscribe to a
  * particular INode. Using a seperate component per INode prevents us
  * from having to refresh the whole node-tree whenever a value changes and
  * just updates the DOMnode we need
  */
-export default class DisplayValue extends Component {
+export default class INode extends Component {
   state = {
     value: 0
   };
@@ -15,7 +15,7 @@ export default class DisplayValue extends Component {
   componentWillMount() {
     const { client, INodeAddress } = this.props;
     if (!client || !INodeAddress) {
-      throw new Error('DisplayValue: Parameters missing!');
+      throw new Error('INode: Parameters missing!');
     }
 
     /** Find the INode we want to connect to */
@@ -31,7 +31,9 @@ export default class DisplayValue extends Component {
   }
 
   componentWillUnmount() {
-    // node.unsubscribeFromValues(valueConsumer)
+    client.find(INodeAddress).then(node => {
+      node.unsubscribeFromValues('Value');
+    });
   }
 
   render() {
@@ -44,7 +46,7 @@ export default class DisplayValue extends Component {
   }
 }
 
-DisplayValue.propTypes = {
+INode.propTypes = {
   client: PropTypes.object.isRequired,
   INodeAddress: PropTypes.string.isRequired
 };

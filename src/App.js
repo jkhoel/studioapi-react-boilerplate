@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 /** Components */
 import StudioClient from './components/StudioClient/StudioClient';
-import DisplayValue from './components/DisplayValue/DisplayValue';
+import INode from './components/INode/INode';
 
 /** Initialize a HTML element, that we will use to inject our React App into the DOM */
 const el = React.createElement;
@@ -17,21 +17,21 @@ const el = React.createElement;
 function App(props) {
   return (
     <div className='App'>
-      <h1>StudioAPI😎</h1>
+      <h1>StudioAPI Boilerplate😎</h1>
       <StudioClient
         studio={props.studio}
         studioUrl='127.0.0.2:7689'
         render={client => (
           <React.Fragment>
-            <DisplayValue
+            <INode
               client={client}
               INodeAddress='NMEAGPSApp.NMEAOnSerial.GPGGA_Receive.Latitude'
             />
-            <DisplayValue
+            <INode
               client={client}
               INodeAddress='NMEAGPSApp.NMEAOnSerial.GPGGA_Receive.Longitude'
             />
-            <DisplayValue client={client} INodeAddress='NMEAGPSApp.CPULoad' />
+            <INode client={client} INodeAddress='NMEAGPSApp.CPULoad' />
           </React.Fragment>
         )}
       />
