@@ -1,4 +1,5 @@
-import * as serviceWorker from './serviceWorker';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
 /** StudioAPI Wrapper, written by Jens Kristian Hoel - 2018
  * This enables us to reuse the vanilla StudioAPI.js that ships with CDP Studio
@@ -20,7 +21,7 @@ class ApiWrapper extends React.Component {
     }
 
     /** Create a connection to the Studio Application */
-    const client = new studio.api.Client('127.0.0.3:7689');
+    const client = new studio.api.Client('127.0.0.2:7689');
 
     /** Update our state with the Studio Application Client */
     this.setState({ client });
@@ -30,23 +31,6 @@ class ApiWrapper extends React.Component {
     console.log(error, info);
   }
 
-  // render() {
-  //   let { client } = this.state;
-  //   return (
-  //     <div>
-  //       <h1>StudioAPI in React!😎</h1>
-  //       <DisplayValue
-  //         client={client}
-  //         INodeAddress="NMEAGPSApp.NMEAOnSerial.GPGGA_Receive.Latitude"
-  //       />
-  //       <DisplayValue
-  //         client={client}
-  //         INodeAddress="NMEAGPSApp.NMEAOnSerial.GPGGA_Receive.Longitude"
-  //       />
-  //     </div>
-  //   );
-  // }
-
   render() {
     let { client } = this.state;
     return (
@@ -54,7 +38,11 @@ class ApiWrapper extends React.Component {
         <h1>StudioAPI in React!😎</h1>
         <DisplayValue
           client={client}
-          INodeAddress="StudioAPItest.FakeComponent1.Name"
+          INodeAddress='NMEAGPSApp.NMEAOnSerial.GPGGA_Receive.Latitude'
+        />
+        <DisplayValue
+          client={client}
+          INodeAddress='NMEAGPSApp.NMEAOnSerial.GPGGA_Receive.Longitude'
         />
       </div>
     );
@@ -69,7 +57,7 @@ class ApiWrapper extends React.Component {
  */
 class DisplayValue extends React.Component {
   state = {
-    value: 0,
+    value: 0
   };
 
   componentWillMount() {
@@ -79,11 +67,11 @@ class DisplayValue extends React.Component {
     }
 
     /** Find the INode we want to connect to */
-    client.find(INodeAddress).then((node) => {
+    client.find(INodeAddress).then(node => {
       console.log(node);
 
       /** Subscribe to any child values this node has. Whenever there is a change, the acompanying callback will be run */
-      node.subscribeToChildValues('Value', (value) => {
+      node.subscribeToChildValues('Value', value => {
         console.log(value);
         /** Update state, so that we re-render the component three */
         this.setState({ value });
@@ -104,10 +92,5 @@ class DisplayValue extends React.Component {
 /** ReactDOM adds the ApiWrapper to the DOM and passes studio as a prop. This exposes the studio API added in the index.html file to React! :) */
 ReactDOM.render(
   <ApiWrapper studio={studio} />,
-  document.getElementById('test'),
+  document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
