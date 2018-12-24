@@ -28,7 +28,7 @@
     "start": "webpack-dev-server --open --mode=development",
     "dev": "webpack --watch --mode=development",
     "build": "webpack --mode=production",
-    "babel": "babel ./src/App.js -d build"
+    "babel": "babel ./src/App.js -d dist"
   },
   "eslintConfig": {
     "extends": "react-app"

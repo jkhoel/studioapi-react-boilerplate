@@ -5,12 +5,12 @@ module.exports = {
     app: './src/App.js'
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js'
   },
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './build'
+    contentBase: './dist'
   },
   module: {
     rules: [
