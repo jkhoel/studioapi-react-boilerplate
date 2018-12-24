@@ -24,5 +24,3 @@ So when it comes time to deploy to the webserver of your choice, run `npm run bu
 Visit [CDP Stuido](https://www.cdpstudio.com) to learn more about how to build fast, distributed control systems on industrial computers.
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-To learn more about protocol-buffers, visit [the official Google documentation](https://developers.google.com/protocol-buffers/docs/overview)
