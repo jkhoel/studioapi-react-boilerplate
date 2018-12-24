@@ -8,7 +8,12 @@ Each CDP Application runs a StudioAPIServer exposed on 127.0.0.x:7689 (See Appli
 Studioapi.js needs all its dependencies exposed to the DOM via `<script>` tags in index.html. The problem then becomes how to expose the studio function to the react components for further use. This is done via index.js. Here we are able to access the studio function as this file is also supplied via a `<script>` tag in index.html. We then create the ApiWrapper-component and mount this to the DOM with ReactDOM - passing the studio function as a prop in the process!
 
 ## How to use
-TBD...
+- Add the required scripts to index.html
+- Run NPM install
+- COAD! \o/
+
+## Known Issues
+- Importing both the React scripts via CDN and also as modules can bloat the code...
 
 ## Learn More
 Visit [CDP Stuido](https://www.cdpstudio.com) to learn more about how to build fast, distributed control systems on industrial computers.
